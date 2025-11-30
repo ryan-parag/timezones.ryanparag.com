@@ -1,7 +1,13 @@
 import { motion } from 'framer-motion';
 import { Button } from '@base-ui-components/react';
 
-const Sidebar = ({ handleClick }) => {
+interface SidebarProps {
+  handleClick: (id: boolean) => void
+}
+
+const Sidebar = ({
+  handleClick
+}: SidebarProps) => {
 	return(
 		<>
 			<motion.aside

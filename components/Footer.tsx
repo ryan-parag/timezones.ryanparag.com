@@ -3,7 +3,13 @@
 import { Button } from '@base-ui-components/react/button';
 import { Github, Info } from 'lucide-react'
 
-export default function Footer({ handleClick }) {
+interface FooterProps {
+  handleClick: (id: boolean) => void
+}
+
+export default function Footer({
+  handleClick
+}: FooterProps) {
   return (
     <footer className="mt-12">
       <div className="container mx-auto px-4 py-6">

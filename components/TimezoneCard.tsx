@@ -52,7 +52,7 @@ export default function TimezoneCard({
       {!timezone.isUserTime && (
         <Button
           onClick={() => onRemove(timezone.id)}
-          className="absolute top-3 right-4 p-1 rounded-md hover:bg-white/10 text-zinc-400 hover:text-zinc-200 transition-colors"
+          className="absolute top-3 right-4 p-1 rounded-md text-zinc-400 hover:bg-white/10 hover:text-zinc-200 dark:text-zinc-600 dark:hover:bg-zinc-950/10 dark:hover:text-zinc-700 transition-colors"
         >
           <X className="h-5 w-5"/>
         </Button>

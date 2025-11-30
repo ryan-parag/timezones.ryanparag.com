@@ -68,11 +68,6 @@ export default function Header({
 
     copyTextToClipboard()
 
-    setCopied(true);
-
-    setTimeout(() => {
-      setCopied(false)
-    }, "2000");
   }
 
   const browserTime = format(currentTime, is24Hour ? 'HH:mm' : 'h:mm aa')

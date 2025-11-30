@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import './globals.css'
+import './globals.css';
 
 export const metadata: Metadata = {
   title: 'Timezones',
@@ -12,9 +12,9 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className="font-sans">{children}</body>
-    </html>
+      <html lang="en">
+        <body className="font-sans">{children}</body>
+      </html>
   )
 }
 

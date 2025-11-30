@@ -153,19 +153,19 @@ export default function Header({
 
           {/* Search Results */}
           {showResults && searchResults.length > 0 && (
-            <div className="absolute z-10 w-full mt-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg max-h-60 overflow-y-auto">
+            <div className="absolute z-10 w-full mt-1 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg shadow-sm max-h-60 overflow-y-auto p-1 gap-px">
               {searchResults.map((result) => (
                 <button
                   key={result.id}
                   onClick={() => handleSelectCity(result)}
-                  className="w-full px-4 py-3 text-left hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors border-b border-gray-200 dark:border-gray-700 last:border-b-0"
+                  className="w-full px-4 py-3 text-left hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors rounded-md"
                 >
-                  <div className="font-medium text-gray-900 dark:text-gray-100">
+                  <div className="font-medium text-zinc-950 dark:text-white">
                     {result.city}
                     {result.state && `, ${result.state}`}
                     {result.country && `, ${result.country}`}
                   </div>
-                  <div className="text-sm text-gray-500 dark:text-gray-400">
+                  <div className="text-sm text-zinc-500">
                     {result.timezone}
                   </div>
                 </button>

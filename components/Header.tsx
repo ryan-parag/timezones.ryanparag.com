@@ -57,17 +57,22 @@ export default function Header({
 
   async function copyTextToClipboard() {
 
-    setCopied(true);
-
-    setTimeout(() => {
-      setCopied(false)
-    }, "2000");
-
     if ('clipboard' in navigator) {
       return await navigator.clipboard.writeText(window.location.href);
     } else {
       return document.execCommand('copy', true, window.location.href);
     }
+  }
+
+  const handleCopy = () => {
+
+    copyTextToClipboard()
+
+    setCopied(true);
+
+    setTimeout(() => {
+      setCopied(false)
+    }, "2000");
   }
 
   const browserTime = format(currentTime, is24Hour ? 'HH:mm' : 'h:mm aa')
@@ -139,7 +144,7 @@ export default function Header({
 
             {/* Share Button */}
             <Button
-              onClick={() => copyTextToClipboard()}
+              onClick={() => handleCopy()}
               className="bg-white dark:bg-zinc-950 rounded-full p-2 border border-zinc-200 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 transition-colors hover:text-zinc-900 dark:hover:text-zinc-200 hover:bg-zinc-950/10 dark:hover:bg-white/10"
             >
               {

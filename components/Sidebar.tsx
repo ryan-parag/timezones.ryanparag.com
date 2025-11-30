@@ -39,6 +39,7 @@ const Sidebar = ({
 				</div>
 				<div className="leading-6 text-base mt-4">
 					<p className="mb-4">Hey 👋, I’m <a href="https://ryanparag.com" target="_blank" className="link">Ryan Parag</a>, a product designer based in Tampa, FL. I wanted to make a stupidly-simple way to track timezones on my browser.</p>
+					<p className="mb-4">You can easily add/remove timezones by city + share the link to your preferred timezones, as they're stored in the query parameters of the URL.</p>
 					<p>I'm always making small updates to this app, but feel free to poke around the&nbsp;
 					<a href="https://github.com/ryan-parag/timezones.ryanparag.com" target="_blank" className="link">GitHub Repository</a> if you have feedback or would like to help. Color theme and logo inspired by the <a href="https://www.omegawatches.com/en-us/watch-omega-speedmaster-anniversary-series-31112423001001" target="_blank" className="link ring-primary/10">Omega Ultraman Speedmaster</a>.  Typography set in <a href="https://pangrampangram.com/products/neue-corp" target="_blank" className="link">PP Neue Corp</a>.</p>
 				</div>

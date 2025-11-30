@@ -5,6 +5,7 @@ import { TimezoneData } from '@/types'
 import { formatTime, formatDate, getGMTOffset, getTimezoneAbbreviation } from '@/utils/timezone'
 import { utcToZonedTime } from 'date-fns-tz'
 import { Calendar, X } from 'lucide-react'
+import moment from 'moment';
 
 interface TimezoneCardProps {
   timezone: TimezoneData
@@ -71,7 +72,7 @@ export default function TimezoneCard({
         </div>
         {/* Your Time Badge */}
         {timezone.isUserTime && (
-            <span className="bg-primary/10 text-primary text-xs font-medium px-3 py-1 rounded-full">
+            <span className="bg-primary/10 text-primary border border-primary/10 text-xs font-medium px-3 py-1 rounded-full">
               Your Time
             </span>
         )}
@@ -118,7 +119,7 @@ export default function TimezoneCard({
         className={`flex items-center gap-2 mb-6 text-zinc-500`}
       >
         <Calendar className="h-4 w-4"/>
-        <span className="text-xs">{date}</span>
+        <span className="text-xs">{moment(date).format("ddd, MMM DD")}</span>
       </div>
 
       {/* Time Slider */}
@@ -139,7 +140,7 @@ export default function TimezoneCard({
 
           {/* Current time indicator */}
           <div
-            className="absolute top-1/2 transform -translate-y-1/2 w-1 h-5 bg-primary"
+            className="absolute top-1/2 transform -translate-y-1/2 w-0.5 h-6 bg-primary"
             style={{ left: `${sliderPosition}%` }}
           />
         </div>
@@ -181,7 +182,7 @@ export default function TimezoneCard({
           className="absolute top-0 transform -translate-x-1/2"
           style={{ left: `${sliderPosition}%` }}
         >
-          <div className="text-xs font-normal text-primary mt-4 py-1 px-1 whitespace-nowrap relative rounded-full overflow-hidden">
+          <div className="text-xs font-normal text-primary mt-4 py-1 px-1.5 whitespace-nowrap relative rounded-full overflow-hidden">
             {is24Hour
               ? `${currentHour.toString().padStart(2, '0')}:${currentMinutes.toString().padStart(2, '0')}`
               : currentHour === 0

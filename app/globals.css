@@ -32,4 +32,8 @@ body {
     sans-serif;
 }
 
+.link {
+  @apply transition underline underline-offset-2 text-zinc-700 dark:text-zinc-400 hover:text-primary dark:hover:text-primary hover:bg-primary/10 rounded hover:ring-4 ring-primary/10
+}
+
 

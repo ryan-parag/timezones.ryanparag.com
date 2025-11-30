@@ -150,6 +150,8 @@ function HomeContent() {
         isDarkMode={isDarkMode}
         setIsDarkMode={setIsDarkMode}
         currentTime={currentTime}
+        timezones={timezones}
+        setTimezones={setTimezones}
       />
       <main className="container mx-auto px-4 py-8 lg:min-h-[578px]">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

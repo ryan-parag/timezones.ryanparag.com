@@ -1,6 +1,6 @@
 'use client'
 
-import { Button } from '@mui/base/Button'
+import { Button } from '@base-ui-components/react/button';
 import { TimezoneData } from '@/types'
 import { formatTime, formatDate, getGMTOffset, getTimezoneAbbreviation } from '@/utils/timezone'
 import { utcToZonedTime } from 'date-fns-tz'
@@ -58,25 +58,25 @@ export default function TimezoneCard({
         </Button>
       )}
 
-      {/* Your Time Badge */}
-      {timezone.isUserTime && (
-        <div className="absolute top-4 right-4">
-          <span className="bg-primary text-white text-xs font-medium px-3 py-1 rounded-full">
-            Your Time
-          </span>
-        </div>
-      )}
-
       {/* Location */}
-      <div
-        className={`text-lg font-medium mb-2 ${
-          timezone.isUserTime
-            ? 'text-zinc-950 dark:text-white'
-            : 'text-white dark:text-zinc-950'
-        }`}
-      >
-        {locationText}
+      <div className="flex items-center gap-2 mb-2">
+        <div
+          className={`text-lg font-medium ${
+            timezone.isUserTime
+              ? 'text-zinc-950 dark:text-white'
+              : 'text-white dark:text-zinc-950'
+          }`}
+        >
+          {locationText}
+        </div>
+        {/* Your Time Badge */}
+        {timezone.isUserTime && (
+            <span className="bg-primary/10 text-primary text-xs font-medium px-3 py-1 rounded-full">
+              Your Time
+            </span>
+        )}
       </div>
+      
 
       <div className="flex justify-between">
         {/* Timezone Name */}

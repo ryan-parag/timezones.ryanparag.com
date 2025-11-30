@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback, Suspense } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import Sidebar from '@/components/Sidebar'
 import TimezoneCard from '@/components/TimezoneCard'
 import { TimezoneData } from '@/types'
 import { getUserLocation } from '@/utils/userLocation'
@@ -135,8 +136,13 @@ function HomeContent() {
     setTimezones(timezones.filter(tz => tz.id !== id))
   }
 
+  const [aboutOpen, setAboutOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-white dark:bg-zinc-950">
+      {
+        aboutOpen && <Sidebar handleClick={setAboutOpen}/>
+      }
       <Header
         onAddTimezone={handleAddTimezone}
         is24Hour={is24Hour}
@@ -145,7 +151,7 @@ function HomeContent() {
         setIsDarkMode={setIsDarkMode}
         currentTime={currentTime}
       />
-      <main className="container mx-auto px-4 py-8">
+      <main className="container mx-auto px-4 py-8 lg:min-h-[578px]">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* Always show user-time card first */}
           {userTime && (
@@ -169,7 +175,7 @@ function HomeContent() {
           ))}
         </div>
       </main>
-      <Footer />
+      <Footer handleClick={setAboutOpen} />
     </div>
   )
 }

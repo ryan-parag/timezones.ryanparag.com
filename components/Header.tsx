@@ -1,8 +1,8 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Button } from '@mui/base/Button'
-import { Input } from '@mui/base/Input'
+import { Button } from '@base-ui-components/react/button';
+import { Input } from '@base-ui-components/react/input';
 import { TimezoneData } from '@/types'
 import { searchCity } from '@/utils/timezone'
 import { format } from 'date-fns'
@@ -55,7 +55,7 @@ export default function Header({
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between mb-6">
           {/* Logo */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1">
             <div className="h-8 w-8">
               <img src="/logo/timezone-logo-32.svg" alt="Timezone logo"/>
             </div>
@@ -139,15 +139,10 @@ export default function Header({
               <Globe className="h-5 w-5 text-zinc-500"/>
             </div>
             <Input
-              slotProps={{
-                input: {
-                  className:
-                    'transition w-full font-sans font-normal leading-5 pr-8 pl-9 py-3 rounded-full shadow-xs border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900 hover:border-zinc-300 dark:hover:border-zinc-400 dark:hover:bg-zinc-700 hover:bg-zinc-200 dark:hover:border-zinc-700 focus:border-zinc-800 dark:focus:border-zinc-300 focus:ring-4 focus:ring-primary/20 focus:bg-white dark:focus:bg-zinc-950 focus-visible:outline-0 text-zinc-950 dark:text-white',
-                },
-              }}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search for a city"
+              className={'transition w-full font-sans font-normal leading-5 pr-8 pl-9 py-3 rounded-full shadow-xs border bg-zinc-50 dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:bg-zinc-800 hover:bg-zinc-100 dark:hover:border-zinc-700 focus:border-zinc-800 dark:focus:border-zinc-300 focus:ring-4 focus:ring-primary/30 focus:bg-white dark:focus:bg-zinc-950 focus-visible:outline-0 text-zinc-950 dark:text-white'}
             />
           </div>
 

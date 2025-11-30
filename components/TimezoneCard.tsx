@@ -61,7 +61,7 @@ export default function TimezoneCard({
       {/* Your Time Badge */}
       {timezone.isUserTime && (
         <div className="absolute top-4 right-4">
-          <span className="bg-orange-500 text-white text-xs font-medium px-3 py-1 rounded-full">
+          <span className="bg-primary text-white text-xs font-medium px-3 py-1 rounded-full">
             Your Time
           </span>
         </div>
@@ -139,7 +139,7 @@ export default function TimezoneCard({
 
           {/* Current time indicator */}
           <div
-            className="absolute top-1/2 transform -translate-y-1/2 w-0.5 h-5 bg-orange-500"
+            className="absolute top-1/2 transform -translate-y-1/2 w-1 h-5 bg-primary"
             style={{ left: `${sliderPosition}%` }}
           />
         </div>
@@ -191,7 +191,7 @@ export default function TimezoneCard({
               : currentHour < 12
               ? `${currentHour}:${currentMinutes.toString().padStart(2, '0')}AM`
               : `${currentHour - 12}:${currentMinutes.toString().padStart(2, '0')}PM`}
-              <div className="absolute top-0 bottom-0 left-0 right-0 bg-zinc-900/80 dark:bg-white/80 -z-10"/>
+              <div className={`absolute top-0 bottom-0 left-0 right-0 ${timezone.isUserTime ? 'bg-white/80 dark:bg-zinc-900/80' : 'bg-zinc-900/80 dark:bg-white/80'} -z-10`}/>
           </div>
         </div>
       </div>

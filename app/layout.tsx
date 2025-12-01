@@ -5,7 +5,6 @@ import './globals.css';
 export const metadata: Metadata = {
   title: 'Timezones',
   description: 'View and manage timezones across the world',
-  url: 'https://timezones.ryanparag.com'
 }
 
 export default function RootLayout({

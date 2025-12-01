@@ -6,6 +6,7 @@ import { formatTime, formatDate, getGMTOffset, getTimezoneAbbreviation } from '@
 import { utcToZonedTime } from 'date-fns-tz'
 import { Calendar, X } from 'lucide-react'
 import moment from 'moment';
+import { Separator } from '@base-ui-components/react/separator';
 
 interface TimezoneCardProps {
   timezone: TimezoneData
@@ -45,7 +46,7 @@ export default function TimezoneCard({
 
   return (
     <div
-      className={`relative rounded-xl ${dense ? 'px-4 pt-2 pb-6' : 'px-6 pt-4 pb-8'} border ${
+      className={`relative rounded-xl overflow-hidden ${dense ? 'px-4 pt-2 pb-6' : 'px-6 pt-4 pb-8'} border ${
         timezone.isUserTime
           ? 'bg-gradient-to-r from-white to-zinc-100 border-zinc-200 text-zinc-950 dark:from-zinc-800 dark:to-zinc-900 dark:text-white dark:border-zinc-800'
           : 'bg-gradient-to-r from-zinc-800 to-zinc-900 border-zinc-800 text-white dark:from-white dark:to-zinc-100 dark:text-zinc-950 dark:border-zinc-200'
@@ -74,17 +75,17 @@ export default function TimezoneCard({
         </div>
         {/* Your Time Badge */}
         {timezone.isUserTime && (
-            <span className={`bg-primary/10 text-primary border border-primary/10 text-xs font-medium ${dense ? 'px-2 py-0.5':'px-3 py-1'} rounded-full`}>
+            <span className={`bg-primary/10 text-primary border border-primary/10 font-medium ${dense ? 'uppercase tracking-wide text-[10px] px-1.5 py-0.5':'text-xs px-3 py-1'} rounded-full`}>
               Your Time
             </span>
         )}
       </div>
       
 
-      <div className="flex justify-between">
+      <div className={`flex items-center mb-1 ${dense ? 'justify-start' : 'justify-between'}`}>
         {/* Timezone Name */}
         <div
-          className={`text-xs mb-1 ${
+          className={`text-xs ${
             timezone.isUserTime
               ? 'text-zinc-500 dark:text-zinc-500'
               : 'text-zinc-500'
@@ -92,10 +93,12 @@ export default function TimezoneCard({
         >
           {timezoneName}
         </div>
-
+        {
+          dense && (<Separator orientation="vertical" className={'w-px h-2 mx-2 my-0 bg-zinc-400 dark:bg-zinc-700'} />)
+        }
         {/* GMT Offset */}
         <div
-          className={`text-xs mb-1 ${
+          className={`text-xs ${
             timezone.isUserTime
               ? 'text-zinc-500 dark:text-zinc-500'
               : 'text-zinc-500'
@@ -105,23 +108,24 @@ export default function TimezoneCard({
         </div>
       </div>
 
-      {/* Current Time */}
-      <div
-        className={`${dense ? 'text-2xl mb-1' : 'text-4xl mb-2'} font-medium ${
-          timezone.isUserTime
-            ? 'text-zinc-950 dark:text-white'
-            : 'text-white dark:text-zinc-950'
-        }`}
-      >
-        {time}
-      </div>
-
-      {/* Date */}
-      <div
-        className={`flex items-center ${dense ? 'gap-1 mb-3' :'gap-2 mb-6'} text-zinc-500`}
-      >
-        <Calendar className="h-4 w-4"/>
-        <span className="text-xs">{moment(date).format("ddd, MMM DD")}</span>
+      <div className={`flex ${dense ? 'flex-row items-center mb-2 gap-2' : 'flex-col items-start'}`}>
+        {/* Current Time */}
+        <div
+          className={`${dense ? 'text-2xl' : 'text-4xl mb-2'} font-medium ${
+            timezone.isUserTime
+              ? 'text-zinc-950 dark:text-white'
+              : 'text-white dark:text-zinc-950'
+          }`}
+        >
+          {time}
+        </div>
+        {/* Date */}
+        <div
+          className={`flex items-center ${dense ? 'gap-1' :'gap-2 mb-6'} text-zinc-500`}
+        >
+          <Calendar className="h-4 w-4"/>
+          <span className="text-xs">{dense ? moment(date).format("ddd, MMM DD") : moment(date).format("dddd, MMMM DD")}</span>
+        </div>
       </div>
 
       {/* Time Slider */}

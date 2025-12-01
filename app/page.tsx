@@ -8,8 +8,6 @@ import Sidebar from '@/components/Sidebar'
 import TimezoneCard from '@/components/TimezoneCard'
 import { TimezoneData } from '@/types'
 import { getUserLocation } from '@/utils/userLocation'
-import { Toast } from '@base-ui-components/react/toast';
-import { Tooltip } from '@base-ui-components/react/tooltip';
 
 
 function HomeContent() {
@@ -140,9 +138,10 @@ function HomeContent() {
   }
 
   const [aboutOpen, setAboutOpen] = useState(false);
+  const [dense, setDense] = useState(false);
 
   return (
-    <div className="min-h-screen bg-white dark:bg-zinc-950">
+    <div className={`min-h-screen bg-white dark:bg-zinc-950 ${aboutOpen ? 'overflow-hidden' : 'overflow-auto'}`}>
       {
         aboutOpen && <Sidebar handleClick={setAboutOpen}/>
       }
@@ -155,6 +154,8 @@ function HomeContent() {
         currentTime={currentTime}
         timezones={timezones}
         setTimezones={setTimezones}
+        setDense={setDense}
+        dense={dense}
       />
       <main className="container mx-auto px-4 py-8 lg:min-h-[578px]">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -166,6 +167,7 @@ function HomeContent() {
               currentTime={currentTime}
               is24Hour={is24Hour}
               onRemove={handleRemoveTimezone}
+              dense={dense}
             />
           )}
           {/* Show other timezones */}
@@ -176,6 +178,7 @@ function HomeContent() {
               currentTime={currentTime}
               is24Hour={is24Hour}
               onRemove={handleRemoveTimezone}
+              dense={dense}
             />
           ))}
         </div>

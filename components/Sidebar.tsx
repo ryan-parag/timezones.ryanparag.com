@@ -8,6 +8,14 @@ interface SidebarProps {
 const Sidebar = ({
   handleClick
 }: SidebarProps) => {
+
+	const closeSidebar = () => {
+		if(document.body) {
+      document.body.style.overflow = 'auto'
+    }
+		handleClick(false)
+	}
+
 	return(
 		<>
 			<motion.aside
@@ -21,7 +29,7 @@ const Sidebar = ({
 					<h4 className="text-xl">About</h4>
 					<Button
 						className="flex items-center gap-2 px-3 py-2 bg-white dark:bg-zinc-950 rounded-full p-1 border border-zinc-200 dark:border-zinc-800 transition-colors hover:border-zinc-300 dark:hover:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-950 dark:text-white"
-						onClick={() => handleClick(false)}
+						onClick={() => closeSidebar()}
 					>
 						<span className="font-medium">Close</span>
 					</Button>
@@ -50,8 +58,8 @@ const Sidebar = ({
 				animate={{ opacity: 1 }}
 				exit={{ opacity: 0 }}
 				transition={{ duration: 0.24, delay: 0.1 }}
-				className="fixed z-10 backdrop-blur-sm top-0 bottom-0 left-0 right-0 bg-zinc-950/30 dark:bg-white/30 cursor-pointer"
-				onClick={() => handleClick(false)}
+				className="fixed z-10 backdrop-blur-sm top-0 bottom-0 left-0 right-0 bg-zinc-950/30 dark:bg-white/30 cursor-pointer overflow-hidden"
+				onClick={() => closeSidebar()}
 			/>
 		</>
 	)

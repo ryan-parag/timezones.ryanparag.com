@@ -10,7 +10,8 @@ import moment from 'moment';
 interface TimezoneCardProps {
   timezone: TimezoneData
   currentTime: Date
-  is24Hour: boolean
+  is24Hour: boolean,
+  dense: boolean,
   onRemove: (id: string) => void
 }
 
@@ -18,6 +19,7 @@ export default function TimezoneCard({
   timezone,
   currentTime,
   is24Hour,
+  dense,
   onRemove,
 }: TimezoneCardProps) {
   const time = formatTime(currentTime, timezone.timezone, is24Hour)
@@ -43,7 +45,7 @@ export default function TimezoneCard({
 
   return (
     <div
-      className={`relative rounded-xl px-6 pt-4 pb-8 border ${
+      className={`relative rounded-xl ${dense ? 'px-4 pt-2 pb-6' : 'px-6 pt-4 pb-8'} border ${
         timezone.isUserTime
           ? 'bg-gradient-to-r from-white to-zinc-100 border-zinc-200 text-zinc-950 dark:from-zinc-800 dark:to-zinc-900 dark:text-white dark:border-zinc-800'
           : 'bg-gradient-to-r from-zinc-800 to-zinc-900 border-zinc-800 text-white dark:from-white dark:to-zinc-100 dark:text-zinc-950 dark:border-zinc-200'
@@ -53,16 +55,16 @@ export default function TimezoneCard({
       {!timezone.isUserTime && (
         <Button
           onClick={() => onRemove(timezone.id)}
-          className="absolute top-3 right-4 p-1 rounded-md text-zinc-400 hover:bg-white/10 hover:text-zinc-200 dark:text-zinc-600 dark:hover:bg-zinc-950/10 dark:hover:text-zinc-700 transition-colors"
+          className={`absolute ${dense ? 'top-1.5 right-2' : 'top-3 right-4'} p-1 rounded-md text-zinc-400 hover:bg-white/10 hover:text-zinc-200 dark:text-zinc-600 dark:hover:bg-zinc-950/10 dark:hover:text-zinc-700 transition-colors`}
         >
           <X className="h-5 w-5"/>
         </Button>
       )}
 
       {/* Location */}
-      <div className="flex items-center gap-2 mb-2">
+      <div className={`flex items-center ${dense ? 'gap-1 mb-1' : 'gap-2 mb-2'}`}>
         <div
-          className={`text-lg font-medium ${
+          className={`${dense ? 'text-base' : 'text-lg'} font-medium ${
             timezone.isUserTime
               ? 'text-zinc-950 dark:text-white'
               : 'text-white dark:text-zinc-950'
@@ -72,7 +74,7 @@ export default function TimezoneCard({
         </div>
         {/* Your Time Badge */}
         {timezone.isUserTime && (
-            <span className="bg-primary/10 text-primary border border-primary/10 text-xs font-medium px-3 py-1 rounded-full">
+            <span className={`bg-primary/10 text-primary border border-primary/10 text-xs font-medium ${dense ? 'px-2 py-0.5':'px-3 py-1'} rounded-full`}>
               Your Time
             </span>
         )}
@@ -93,7 +95,7 @@ export default function TimezoneCard({
 
         {/* GMT Offset */}
         <div
-          className={`text-xs mb-4 ${
+          className={`text-xs mb-1 ${
             timezone.isUserTime
               ? 'text-zinc-500 dark:text-zinc-500'
               : 'text-zinc-500'
@@ -105,7 +107,7 @@ export default function TimezoneCard({
 
       {/* Current Time */}
       <div
-        className={`text-4xl font-medium mb-2 ${
+        className={`${dense ? 'text-2xl mb-1' : 'text-4xl mb-2'} font-medium ${
           timezone.isUserTime
             ? 'text-zinc-950 dark:text-white'
             : 'text-white dark:text-zinc-950'
@@ -116,23 +118,23 @@ export default function TimezoneCard({
 
       {/* Date */}
       <div
-        className={`flex items-center gap-2 mb-6 text-zinc-500`}
+        className={`flex items-center ${dense ? 'gap-1 mb-3' :'gap-2 mb-6'} text-zinc-500`}
       >
         <Calendar className="h-4 w-4"/>
         <span className="text-xs">{moment(date).format("ddd, MMM DD")}</span>
       </div>
 
       {/* Time Slider */}
-      <div className="relative px-1">
+      <div className={`relative ${dense ? 'px-3' : 'px-1'}`}>
         <div
           className={`h-3 rounded-full bg-transparent`}
         >
           {/* Hour markers */}
-          <div className="relative h-3">
+          <div className={`relative ${dense ? 'h-0.5' : 'h-3'}`}>
             {Array.from({ length: 25 }).map((_, i) => (
               <div
                 key={i}
-                className="absolute w-px h-3 bg-gray-400 dark:bg-gray-500"
+                className={`absolute ${dense ? 'h-0.5 w-0.5' : 'w-px h-3'} bg-zinc-400 dark:bg-zinc-500`}
                 style={{ left: `${(i / 24) * 100}%` }}
               />
             ))}
@@ -140,13 +142,13 @@ export default function TimezoneCard({
 
           {/* Current time indicator */}
           <div
-            className="absolute top-1/2 transform -translate-y-1/2 w-0.5 h-6 bg-primary"
+            className={`absolute transform -translate-y-1/2 ${dense ? 'w-0.5 h-3 top-0.5' : 'w-0.5 h-6 top-1/2'} bg-primary`}
             style={{ left: `${sliderPosition}%` }}
           />
         </div>
 
         {/* Hour labels */}
-        <div className="relative mt-2">
+        <div className={`relative ${dense ? 'mt-1' : 'mt-2'}`}>
           {[0, 6, 12, 18, 24].map((hour) => {
             const label = is24Hour
               ? `${hour.toString().padStart(2, '0')}:00`
@@ -179,7 +181,7 @@ export default function TimezoneCard({
 
         {/* Current hour indicator */}
         <div
-          className="absolute top-0 transform -translate-x-1/2"
+          className={`absolute ${dense ? '-top-1' : 'top-0'} transform -translate-x-1/2`}
           style={{ left: `${sliderPosition}%` }}
         >
           <div className="text-xs font-normal text-primary mt-4 py-1 px-1.5 whitespace-nowrap relative rounded-full overflow-hidden">

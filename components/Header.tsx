@@ -6,11 +6,13 @@ import { Input } from '@base-ui-components/react/input';
 import { TimezoneData } from '@/types'
 import { searchCity } from '@/utils/timezone'
 import { format } from 'date-fns'
-import { Globe, Sun, Moon, Clipboard, X, Check } from 'lucide-react'
+import { Globe, Sun, Moon, Clipboard, X, Check, LayoutGrid, Grid3x3 } from 'lucide-react'
 import moment from 'moment';
 import { Separator } from '@base-ui-components/react/separator';
 import { Tooltip } from '@base-ui-components/react/tooltip';
 import { Toast } from '@base-ui-components/react';
+import { Toggle } from '@base-ui-components/react/toggle';
+import { ToggleGroup } from '@base-ui-components/react/toggle-group';
 
 const anchoredToastManager = Toast.createToastManager();
 
@@ -102,7 +104,9 @@ interface HeaderProps {
   setIsDarkMode: (value: boolean) => void
   currentTime: Date,
   timezones: any,
-  setTimezones: any
+  setTimezones: any,
+  dense: boolean,
+  setDense: any
 }
 
 export default function Header({
@@ -113,7 +117,9 @@ export default function Header({
   setIsDarkMode,
   currentTime,
   timezones,
-  setTimezones
+  setTimezones,
+  dense,
+  setDense
 }: HeaderProps) {
   const [searchQuery, setSearchQuery] = useState('')
   const [searchResults, setSearchResults] = useState<TimezoneData[]>([])
@@ -270,21 +276,31 @@ export default function Header({
               )}
 
               {/* Browser Time */}
-              <div className="pt-3 text-center text-xs text-zinc-500 flex items-center justify-center">
+              <div className="pt-3 text-center text-xs text-zinc-500 flex items-center justify-center flex-col">
                 Your browser time is {browserTime} on {moment(browserDate).format("ddd, MMM DD")}
-                {
-                  timezones.length > 0 && (
-                    <>
-                      <Separator orientation="vertical" className={'w-px h-3 mx-1 bg-zinc-400 dark:bg-zinc-700'} />
-                      <Button
-                        onClick={() => setTimezones([])}
-                        className="underline transition ring-4 ring-transparent hover:text-zinc-800 hover:ring-zinc-200 hover:bg-zinc-200 dark:hover:text-zinc-100 dark:hover:ring-zinc-800 dark:hover:bg-zinc-800 rounded-sm"
-                      >
-                        Clear all
-                      </Button>
-                    </>
-                  )
-                }
+                <div className="flex items-center mt-2">
+                  <ToggleGroup defaultValue={['default']} className={`flex gap-0 border border-zinc-200 dark:border-zinc-800 rounded-full p-0.5`}>
+                    <Toggle onClick={() => setDense(false)} ariaLabel="Default" value="default" className={`bg-transparent data-pressed:text-purple-500 w-6 h-6 flex items-center justify-center rounded-full ${!dense && 'text-zinc-800 dark:text-white bg-zinc-200 dark:bg-zinc-800'}`}>
+                      <LayoutGrid className={`w-4 h-4`} />
+                    </Toggle>
+                    <Toggle onClick={() => setDense(true)} ariaLabel="Dense" value="dense" className={`bg-transparent data-pressed:bg-primary w-6 h-6 flex items-center justify-center rounded-full ${dense && 'text-zinc-800 dark:text-white bg-zinc-200 dark:bg-zinc-800'}`}>
+                      <Grid3x3 className={`w-4 h-4`} />
+                    </Toggle>
+                  </ToggleGroup>
+                  {
+                    timezones.length > 0 && (
+                      <>
+                        <Separator orientation="vertical" className={'w-px h-3 mx-1 bg-zinc-400 dark:bg-zinc-700'} />
+                        <Button
+                          onClick={() => setTimezones([])}
+                          className="inline-flex transition rounded-full px-2 py-1.5 border border-zinc-200 dark:border-zinc-800 hover:text-zinc-800 hover:ring-zinc-200 hover:bg-zinc-200 dark:hover:text-zinc-100 dark:hover:ring-zinc-800 dark:hover:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700"
+                        >
+                          Clear all
+                        </Button>
+                      </>
+                    )
+                  }
+                </div>
               </div>
             </div>
           </div>

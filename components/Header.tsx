@@ -106,7 +106,7 @@ interface HeaderProps {
   timezones: any,
   setTimezones: any,
   dense: boolean,
-  setDense: any
+  setDense: (value: boolean) => void
 }
 
 export default function Header({

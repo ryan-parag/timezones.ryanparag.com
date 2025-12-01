@@ -145,17 +145,9 @@ export default function Header({
     setShowResults(false)
   }
 
-  async function copyTextToClipboard() {
-
-    if ('clipboard' in navigator) {
-      return await navigator.clipboard.writeText(window.location.href);
-    } else {
-      return document.execCommand('copy', true, window.location.href);
-    }
-  }
-
   const browserTime = format(currentTime, is24Hour ? 'HH:mm' : 'h:mm aa')
-  const browserDate = format(currentTime, 'MM-dd-yyyy')
+  const browserDate = format(currentTime, 'MM-dd-yyyy');
+  const buttonRef = useRef<HTMLButtonElement | null>(null);
 
   return (
     <Tooltip.Provider>
@@ -279,36 +271,25 @@ export default function Header({
               <div className="pt-3 text-center text-xs text-zinc-500 flex items-center justify-center flex-col">
                 Your browser time is {browserTime} on {moment(browserDate).format("ddd, MMM DD")}
                 <div className="flex items-center mt-2">
-                  <ToggleGroup defaultValue={['default']} className={`flex items-center gap-0 border border-zinc-200 dark:border-zinc-800 rounded-full p-0.5`}>
-                    <Tooltip.Root>
-                      <Tooltip.Trigger>
-                        <Toggle onClick={() => setDense(false)} value="default" className={`transition bg-transparent w-6 h-6 flex items-center justify-center rounded-full hover:bg-zinc-200 hover:text-zinc-800 dark:hover:bg-zinc-800 dark:hover:text-zinc-200 ${!dense && 'text-zinc-700 dark:text-white bg-zinc-300 dark:bg-zinc-800'}`}>
+                <Tooltip.Root>
+                  <Tooltip.Trigger>
+                    <ToggleGroup defaultValue={['default']} className={`flex items-center gap-0 border border-zinc-200 dark:border-zinc-800 rounded-full p-0.5`}>
+                      <Toggle onClick={() => setDense(false)} value="default" className={`transition bg-transparent w-6 h-6 flex items-center justify-center rounded-full hover:bg-zinc-200 hover:text-zinc-800 dark:hover:bg-zinc-800 dark:hover:text-zinc-200 ${!dense && 'text-zinc-700 dark:text-white bg-zinc-300 dark:bg-zinc-800'}`}>
                         <LayoutGrid className={`w-4 h-4`} />
                       </Toggle>
-                      </Tooltip.Trigger>
-                      <Tooltip.Portal>
-                        <Tooltip.Positioner sideOffset={8}>
-                          <Tooltip.Popup className={'box-border text-sm leading-5 rounded-md bg-white dark:bg-zinc-900 shadow-lg border border-zinc-200 dark:border-zinc-800 p-2 text-zinc-800 dark:text-white'}>
-                            Expanded Cards
-                          </Tooltip.Popup>
-                        </Tooltip.Positioner>
-                      </Tooltip.Portal>
-                    </Tooltip.Root>
-                    <Tooltip.Root>
-                      <Tooltip.Trigger>
-                        <Toggle onClick={() => setDense(true)} value="dense" className={`transition bg-transparent w-6 h-6 flex items-center justify-center rounded-full hover:bg-zinc-200 hover:text-zinc-800 dark:hover:bg-zinc-800 dark:hover:text-zinc-200 ${dense && 'text-zinc-800 dark:text-white bg-zinc-300 dark:bg-zinc-700'}`}>
-                          <Grid3x3 className={`w-4 h-4`} />
-                        </Toggle>
-                      </Tooltip.Trigger>
-                      <Tooltip.Portal>
-                        <Tooltip.Positioner sideOffset={8}>
-                          <Tooltip.Popup className={'box-border text-sm leading-5 rounded-md bg-white dark:bg-zinc-900 shadow-lg border border-zinc-200 dark:border-zinc-800 p-2 text-zinc-800 dark:text-white'}>
-                            Dense Cards
-                          </Tooltip.Popup>
-                        </Tooltip.Positioner>
-                      </Tooltip.Portal>
-                    </Tooltip.Root>
-                  </ToggleGroup>
+                      <Toggle onClick={() => setDense(true)} value="dense" className={`transition bg-transparent w-6 h-6 flex items-center justify-center rounded-full hover:bg-zinc-200 hover:text-zinc-800 dark:hover:bg-zinc-800 dark:hover:text-zinc-200 ${dense && 'text-zinc-800 dark:text-white bg-zinc-300 dark:bg-zinc-700'}`}>
+                        <Grid3x3 className={`w-4 h-4`} />
+                      </Toggle>
+                    </ToggleGroup>
+                    <Tooltip.Portal>
+                      <Tooltip.Positioner sideOffset={8}>
+                        <Tooltip.Popup className={'box-border text-sm leading-5 rounded-md bg-white dark:bg-zinc-900 shadow-lg border border-zinc-200 dark:border-zinc-800 p-2 text-zinc-800 dark:text-white'}>
+                          Expanded or Dense Cards
+                        </Tooltip.Popup>
+                      </Tooltip.Positioner>
+                    </Tooltip.Portal>
+                    </Tooltip.Trigger>
+                  </Tooltip.Root>
                   {
                     timezones.length > 0 && (
                       <>

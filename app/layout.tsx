@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   creator: 'Ryan Parag',
   keywords: ['timezones', 'world clock', 'time'],
   icons: {
-    icon: '/favicon.svg'
+    icon: 'https://timezones.ryanparag.com/favicon.svg'
   },
   openGraph: {
     title: 'Timezones',

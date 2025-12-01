@@ -280,10 +280,10 @@ export default function Header({
                 Your browser time is {browserTime} on {moment(browserDate).format("ddd, MMM DD")}
                 <div className="flex items-center mt-2">
                   <ToggleGroup defaultValue={['default']} className={`flex gap-0 border border-zinc-200 dark:border-zinc-800 rounded-full p-0.5`}>
-                    <Toggle onClick={() => setDense(false)} value="default" className={`bg-transparent data-pressed:text-purple-500 w-6 h-6 flex items-center justify-center rounded-full ${!dense && 'text-zinc-800 dark:text-white bg-zinc-200 dark:bg-zinc-800'}`}>
+                    <Toggle onClick={() => setDense(false)} value="default" className={`transition bg-transparent w-6 h-6 flex items-center justify-center rounded-full hover:bg-zinc-200 hover:text-zinc-800 dark:hover:bg-zinc-800 dark:hover:text-zinc-200 ${!dense && 'text-zinc-700 dark:text-white bg-zinc-300 dark:bg-zinc-800'}`}>
                       <LayoutGrid className={`w-4 h-4`} />
                     </Toggle>
-                    <Toggle onClick={() => setDense(true)} value="dense" className={`bg-transparent data-pressed:bg-primary w-6 h-6 flex items-center justify-center rounded-full ${dense && 'text-zinc-800 dark:text-white bg-zinc-200 dark:bg-zinc-800'}`}>
+                    <Toggle onClick={() => setDense(true)} value="dense" className={`transition bg-transparent w-6 h-6 flex items-center justify-center rounded-full hover:bg-zinc-200 hover:text-zinc-800 dark:hover:bg-zinc-800 dark:hover:text-zinc-200 ${dense && 'text-zinc-800 dark:text-white bg-zinc-300 dark:bg-zinc-700'}`}>
                       <Grid3x3 className={`w-4 h-4`} />
                     </Toggle>
                   </ToggleGroup>

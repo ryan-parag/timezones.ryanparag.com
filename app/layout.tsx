@@ -14,7 +14,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
 
-  const meta: {
+  const meta = {
     title: 'Timezones',
     description: 'View and manage timezones across the world',
     url: 'https://timezones.ryanparag.com'

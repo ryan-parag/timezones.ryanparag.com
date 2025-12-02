@@ -145,8 +145,18 @@ export default function Header({
     setShowResults(false)
   }
 
-  const browserTime = format(currentTime, is24Hour ? 'HH:mm' : 'h:mm aa')
-  const browserDate = format(currentTime, 'MM-dd-yyyy');
+  const formatDate = (time) => {
+    dense ? (
+      moment(time).format("ddd, MMM DD")
+    )
+    :
+    (
+      moment(currentTime).format("dddd, MMMM DD")
+    )
+  }
+
+  const browserTime = format(currentTime, is24Hour ? 'HH:mm:ss' : 'h:mm:ss aa')
+  const browserDate = format(currentTime, 'MM-dd-yyyy') ;
   const buttonRef = useRef<HTMLButtonElement | null>(null);
 
   return (
@@ -269,7 +279,7 @@ export default function Header({
 
               {/* Browser Time */}
               <div className="pt-3 text-center text-xs text-zinc-500 flex items-center justify-center flex-col">
-                Your browser time is {browserTime} on {moment(browserDate).format("ddd, MMM DD")}
+                Your browser time is {browserTime} on {dense ? moment(browserDate).format("ddd, MMM DD") : moment(currentTime).format("dddd, MMMM DD")}
                 <div className="flex items-center mt-2">
                 <Tooltip.Root>
                   <Tooltip.Trigger>

@@ -188,7 +188,7 @@ export default function TimezoneCard({
           className={`absolute ${dense ? '-top-1' : 'top-0'} transform -translate-x-1/2`}
           style={{ left: `${sliderPosition}%` }}
         >
-          <div className="text-xs font-normal text-primary mt-4 py-1 px-1.5 whitespace-nowrap relative rounded-full overflow-hidden">
+          <div className={`text-xs font-normal text-primary mt-[18px] py-0.5 px-1 whitespace-nowrap relative rounded-full overflow-hidde ring-2 ${timezone.isUserTime ? 'ring-white/50 dark:ring-zinc-900/50' : 'ring-zinc-900/50 dark:ring-white/50' }`}>
             {is24Hour
               ? `${currentHour.toString().padStart(2, '0')}:${currentMinutes.toString().padStart(2, '0')}`
               : currentHour === 0
@@ -198,7 +198,7 @@ export default function TimezoneCard({
               : currentHour < 12
               ? `${currentHour}:${currentMinutes.toString().padStart(2, '0')}AM`
               : `${currentHour - 12}:${currentMinutes.toString().padStart(2, '0')}PM`}
-              <div className={`absolute top-0 bottom-0 left-0 right-0 ${timezone.isUserTime ? 'bg-white/80 dark:bg-zinc-900/80' : 'bg-zinc-900/80 dark:bg-white/80'} -z-10`}/>
+              <div className={`rounded-full absolute top-0 bottom-0 left-0 right-0 ${timezone.isUserTime ? 'bg-white/80 dark:bg-zinc-900/80' : 'bg-zinc-900/80 dark:bg-white/80'} -z-10`}/>
           </div>
         </div>
       </div>

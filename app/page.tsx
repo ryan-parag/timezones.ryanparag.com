@@ -4,7 +4,6 @@ import { useState, useEffect, useCallback, Suspense } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import Sidebar from '@/components/Sidebar'
 import TimezoneCard from '@/components/TimezoneCard'
 import { TimezoneData } from '@/types'
 import { getUserLocation } from '@/utils/userLocation'
@@ -137,14 +136,10 @@ function HomeContent() {
     setTimezones(timezones.filter(tz => tz.id !== id))
   }
 
-  const [aboutOpen, setAboutOpen] = useState(false);
   const [dense, setDense] = useState(false);
 
   return (
-    <div className={`min-h-screen bg-white dark:bg-zinc-950 ${aboutOpen ? 'overflow-hidden' : 'overflow-auto'}`}>
-      {
-        aboutOpen && <Sidebar handleClick={setAboutOpen}/>
-      }
+    <div className={`min-h-screen bg-white dark:bg-zinc-950`}>
       <Header
         onAddTimezone={handleAddTimezone}
         is24Hour={is24Hour}
@@ -183,7 +178,7 @@ function HomeContent() {
           ))}
         </div>
       </main>
-      <Footer handleClick={setAboutOpen} />
+      <Footer />
     </div>
   )
 }

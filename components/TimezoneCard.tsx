@@ -46,7 +46,7 @@ export default function TimezoneCard({
 
   return (
     <div
-      className={`relative rounded-xl overflow-hidden ${dense ? 'px-4 pt-2 pb-6' : 'px-6 pt-4 pb-8'} border ${
+      className={`relative rounded-xl overflow-hidden shadow-sm shadow-zinc-200 dark:shadow-zinc-800 ${dense ? 'px-4 pt-2 pb-6' : 'px-6 pt-4 pb-8'} border ${
         timezone.isUserTime
           ? 'bg-gradient-to-r from-white to-zinc-100 border-zinc-200 text-zinc-950 dark:from-zinc-800 dark:to-zinc-900 dark:text-white dark:border-zinc-800'
           : 'bg-gradient-to-r from-zinc-800 to-zinc-900 border-zinc-800 text-white dark:from-white dark:to-zinc-100 dark:text-zinc-950 dark:border-zinc-200'

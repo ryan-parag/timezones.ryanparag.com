@@ -145,16 +145,6 @@ export default function Header({
     setShowResults(false)
   }
 
-  const formatDate = (time) => {
-    dense ? (
-      moment(time).format("ddd, MMM DD")
-    )
-    :
-    (
-      moment(currentTime).format("dddd, MMMM DD")
-    )
-  }
-
   const browserTime = format(currentTime, is24Hour ? 'HH:mm:ss' : 'h:mm:ss aa')
   const browserDate = format(currentTime, 'MM-dd-yyyy') ;
   const buttonRef = useRef<HTMLButtonElement | null>(null);

@@ -75,7 +75,7 @@ export default function TimezoneCard({
         </div>
         {/* Your Time Badge */}
         {timezone.isUserTime && (
-            <span className={`bg-primary/10 text-primary border border-primary/10 font-medium ${dense ? 'uppercase tracking-wide text-[10px] px-1.5 py-0.5':'text-xs px-3 py-1'} rounded-full`}>
+            <span className={`bg-primary/10 text-primary border border-primary/10 font-medium ${dense ? 'uppercase tracking-wide text-[10px] px-1.5 py-[2px]':'text-xs px-3 py-1'} rounded-full`}>
               Your Time
             </span>
         )}

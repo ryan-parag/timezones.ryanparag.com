@@ -13,7 +13,7 @@ export default function Footer() {
           <a
             href="https://github.com/ryan-parag/timezones.ryanparag.com"
             target="_blank"
-            className="flex items-center gap-2 px-3 py-2 bg-white dark:bg-zinc-950 rounded-full p-1 border border-zinc-200 dark:border-zinc-800 transition-colors hover:border-zinc-300 dark:hover:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-950 dark:text-white"
+            className="flex items-center gap-2 px-3 py-2 bg-white dark:bg-zinc-950 rounded-full p-1 border border-zinc-200 dark:border-zinc-800 transition-colors hover:border-zinc-300 dark:hover:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-950 dark:text-white transform active:scale-95 active:shadow-inner"
           >
             <Github className="w-5 h-5" />
             <span className="font-medium">Github</span>

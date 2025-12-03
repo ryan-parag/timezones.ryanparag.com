@@ -6,7 +6,7 @@ import { Info } from 'lucide-react'
 export default function AboutDrawer() {
   return (
     <Drawer.Root direction="left">
-      <Drawer.Trigger className="flex items-center gap-2 px-3 py-2 bg-white dark:bg-zinc-950 rounded-full p-1 border border-zinc-200 dark:border-zinc-800 transition-colors hover:border-zinc-300 dark:hover:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-950 dark:text-white">
+      <Drawer.Trigger className="flex items-center gap-2 px-3 py-2 bg-white dark:bg-zinc-950 rounded-full p-1 border border-zinc-200 dark:border-zinc-800 transition-colors hover:border-zinc-300 dark:hover:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-950 dark:text-white transform active:scale-95 active:shadow-inner">
         <Info className="w-5 h-5" />
         About
       </Drawer.Trigger>
@@ -21,7 +21,7 @@ export default function AboutDrawer() {
             <div className="w-full mx-auto">
               <div className="flex w-full justify-between items-center">
                 <Drawer.Title className="text-xl mb-4">About</Drawer.Title>
-                <Drawer.Close className="font-medium flex items-center gap-2 px-3 py-2 bg-white dark:bg-zinc-950 rounded-full p-1 border border-zinc-200 dark:border-zinc-800 transition-colors hover:border-zinc-300 dark:hover:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-950 dark:text-white">Close</Drawer.Close>
+                <Drawer.Close className="font-medium flex items-center gap-2 px-3 py-2 bg-white dark:bg-zinc-950 rounded-full p-1 border border-zinc-200 dark:border-zinc-800 transition-colors hover:border-zinc-300 dark:hover:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-950 dark:text-white transform active:scale-95 active:shadow-inner">Close</Drawer.Close>
               </div>
               <Drawer.Description className="mb-2">
                 <div className="flex items-center gap-1 my-4 p-2 rounded-lg bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700">

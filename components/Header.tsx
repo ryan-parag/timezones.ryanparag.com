@@ -13,6 +13,7 @@ import { Tooltip, TooltipTrigger } from '@base-ui-components/react/tooltip';
 import { Toast } from '@base-ui-components/react';
 import { Toggle } from '@base-ui-components/react/toggle';
 import { ToggleGroup } from '@base-ui-components/react/toggle-group';
+import Link from 'next/link';
 
 const anchoredToastManager = Toast.createToastManager();
 
@@ -78,7 +79,7 @@ function CopyButton() {
     >
       <Tooltip.Trigger
         ref={buttonRef}
-        className={'bg-white dark:bg-zinc-950 rounded-full p-2 border border-zinc-200 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 transition-colors hover:text-zinc-900 dark:hover:text-zinc-200 hover:bg-zinc-950/10 dark:hover:bg-white/10'}
+        className={'bg-white dark:bg-zinc-950 rounded-full p-2 border border-zinc-200 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 transition-colors hover:text-zinc-900 dark:hover:text-zinc-200 hover:bg-zinc-950/10 dark:hover:bg-white/10 transform active:scale-95 active:shadow-inner'}
         onClick={handleCopy}
         aria-label="Copy to clipboard"
         render={<Button disabled={copied} className={'disabled:opacity-50 disabled:cursor-not-allowed'} focusableWhenDisabled />}
@@ -157,14 +158,14 @@ export default function Header({
           <div className="container mx-auto px-4 py-4">
             <div className="flex items-center justify-between mb-8 lg:mb-16">
               {/* Logo */}
-              <div className="flex items-center gap-1">
+              <Link href="/" className="transform transition flex items-center gap-1 rounded hover:bg-zinc-100 hover:ring-8 hover:ring-zinc-100 dark:hover:bg-zinc-800 dark:hover:ring-zinc-800 active:scale-95">
                 <div className="h-8 w-8">
                   <img src="/logo/timezone-ultraman-32.svg" alt="Timezone logo"/>
                 </div>
                 <h1 className="text-lg font-medium text-gray-800 dark:text-gray-200">
                   Timezones
                 </h1>
-              </div>
+              </Link>
 
               {/* Controls */}
               <div className="flex items-center gap-1">
@@ -175,7 +176,7 @@ export default function Header({
                     className={`w-9 py-1 rounded-full text-sm font-medium transition-colors ${
                       !is24Hour
                         ? 'bg-zinc-300 dark:bg-zinc-700 text-zinc-950 dark:text-white'
-                        : 'text-zinc-800 dark:text-zinc-200 hover:text-zinc-900 dark:hover:text-zinc-200 hover:bg-zinc-950/10 dark:hover:bg-white/10'
+                        : 'text-zinc-800 dark:text-zinc-200 hover:text-zinc-900 dark:hover:text-zinc-200 hover:bg-zinc-950/10 dark:hover:bg-white/10 transform active:scale-95 active:shadow-inner'
                     }`}
                   >
                     12hr
@@ -185,7 +186,7 @@ export default function Header({
                     className={`w-9 py-1 rounded-full text-sm font-medium transition-colors ${
                       is24Hour
                         ? 'bg-zinc-300 dark:bg-zinc-700 text-zinc-950 dark:text-white'
-                        : 'text-zinc-800 dark:text-zinc-200 hover:text-zinc-900 dark:hover:text-zinc-200 hover:bg-zinc-950/10 dark:hover:bg-white/10'
+                        : 'text-zinc-800 dark:text-zinc-200 hover:text-zinc-900 dark:hover:text-zinc-200 hover:bg-zinc-950/10 dark:hover:bg-white/10 transform active:scale-95 active:shadow-inner'
                     }`}
                   >
                     24hr
@@ -199,7 +200,7 @@ export default function Header({
                     className={`px-1 py-1 rounded-full text-sm font-medium transition-colors ${
                       !isDarkMode
                         ? 'bg-zinc-300 dark:bg-zinc-700 text-zinc-950 dark:text-white'
-                        : 'text-zinc-800 dark:text-zinc-200 hover:text-zinc-900 dark:hover:text-zinc-200 hover:bg-zinc-950/10 dark:hover:bg-white/10'
+                        : 'text-zinc-800 dark:text-zinc-200 hover:text-zinc-900 dark:hover:text-zinc-200 hover:bg-zinc-950/10 dark:hover:bg-white/10 transform active:scale-95 active:shadow-inner'
                     }`}
                   >
                     <Sun className="h-5 w-5"/>
@@ -209,7 +210,7 @@ export default function Header({
                     className={`px-1 py-1 rounded-full text-sm font-medium transition-colors ${
                       isDarkMode
                         ? 'bg-zinc-300 dark:bg-zinc-700 text-zinc-950 dark:text-white'
-                        : 'text-zinc-800 dark:text-zinc-200 hover:text-zinc-900 dark:hover:text-zinc-200 hover:bg-zinc-950/10 dark:hover:bg-white/10'
+                        : 'text-zinc-800 dark:text-zinc-200 hover:text-zinc-900 dark:hover:text-zinc-200 hover:bg-zinc-950/10 dark:hover:bg-white/10 transform active:scale-95 active:shadow-inner'
                     }`}
                   >
                     <Moon className="h-5 w-5"/>
@@ -236,7 +237,7 @@ export default function Header({
                 {
                   searchQuery.length > 0 && (
                     <button
-                      className="absolute transition inset-y-0 top-1/2 -translate-y-1/2 right-2 flex items-center justify-center cursor-pointer rounded-full text-zinc-600 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-100 hover:bg-zinc-200 dark:hover:bg-zinc-700 w-7 h-7"
+                      className="absolute transition inset-y-0 top-1/2 -translate-y-1/2 right-2 flex items-center justify-center cursor-pointer rounded-full text-zinc-600 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-100 hover:bg-zinc-200 dark:hover:bg-zinc-700 w-7 h-7 transform active:scale-95 active:shadow-inner"
                       onClick={() => setSearchQuery('')}
                     >
                       <X className="h-5 w-5"/>
@@ -252,7 +253,7 @@ export default function Header({
                     <button
                       key={result.id}
                       onClick={() => handleSelectCity(result)}
-                      className="w-full px-4 py-3 text-left hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors rounded-md"
+                      className="w-full px-4 py-3 text-left hover:bg-zinc-100 dark:hover:bg-zinc-800 transition rounded-md transform active:shadow-inner active:bg-zinc-200 dark:active:bg-zinc-700 active:scale-[99%]"
                     >
                       <div className="font-medium text-zinc-950 dark:text-white">
                         {result.city}
@@ -274,10 +275,10 @@ export default function Header({
                 <Tooltip.Root>
                   <Tooltip.Trigger>
                     <ToggleGroup defaultValue={['default']} className={`flex items-center gap-0 border border-zinc-200 dark:border-zinc-800 rounded-full p-0.5`}>
-                      <Toggle onClick={() => setDense(false)} value="default" className={`transition bg-transparent w-6 h-6 flex items-center justify-center rounded-full hover:bg-zinc-200 hover:text-zinc-800 dark:hover:bg-zinc-800 dark:hover:text-zinc-200 ${!dense && 'text-zinc-700 dark:text-white bg-zinc-300 dark:bg-zinc-800'}`}>
+                      <Toggle onClick={() => setDense(false)} value="default" className={`transition bg-transparent w-6 h-6 flex items-center justify-center rounded-full hover:bg-zinc-200 hover:text-zinc-800 dark:hover:bg-zinc-800 dark:hover:text-zinc-200 transform active:scale-95 active:shadow-inner ${!dense && 'text-zinc-700 dark:text-white bg-zinc-300 dark:bg-zinc-800'}`}>
                         <LayoutGrid className={`w-4 h-4`} />
                       </Toggle>
-                      <Toggle onClick={() => setDense(true)} value="dense" className={`transition bg-transparent w-6 h-6 flex items-center justify-center rounded-full hover:bg-zinc-200 hover:text-zinc-800 dark:hover:bg-zinc-800 dark:hover:text-zinc-200 ${dense && 'text-zinc-800 dark:text-white bg-zinc-300 dark:bg-zinc-700'}`}>
+                      <Toggle onClick={() => setDense(true)} value="dense" className={`transition bg-transparent w-6 h-6 flex items-center justify-center rounded-full hover:bg-zinc-200 hover:text-zinc-800 dark:hover:bg-zinc-800 dark:hover:text-zinc-200 transform active:scale-95 active:shadow-inner ${dense && 'text-zinc-800 dark:text-white bg-zinc-300 dark:bg-zinc-700'}`}>
                         <Grid3x3 className={`w-4 h-4`} />
                       </Toggle>
                     </ToggleGroup>
@@ -296,7 +297,7 @@ export default function Header({
                         <Separator orientation="vertical" className={'w-px h-3 mx-1 bg-zinc-400 dark:bg-zinc-700'} />
                         <Button
                           onClick={() => setTimezones([])}
-                          className="inline-flex transition rounded-full px-2 py-1.5 border border-zinc-200 dark:border-zinc-800 hover:text-zinc-800 hover:ring-zinc-200 hover:bg-zinc-200 dark:hover:text-zinc-100 dark:hover:ring-zinc-800 dark:hover:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700"
+                          className="inline-flex transition rounded-full px-2 py-1.5 border border-zinc-200 dark:border-zinc-800 hover:text-zinc-800 hover:ring-zinc-200 hover:bg-zinc-200 dark:hover:text-zinc-100 dark:hover:ring-zinc-800 dark:hover:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 transform active:scale-95 active:shadow-inner"
                         >
                           Clear all
                         </Button>

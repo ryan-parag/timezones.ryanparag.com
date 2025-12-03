@@ -87,7 +87,7 @@ function CopyButton() {
         {copied ? (
           <><Check className={'h-5 w-5 text-green-700 dark:text-green-500'} /> <span>Copied</span></>
           ) : (
-          <><Clipboard className={'h-5 w-5'} /> <span>Share URL</span></>
+          <><Clipboard className={'h-5 w-5'} /> <span>Share</span></>
           )}
       </Tooltip.Trigger>
       <Tooltip.Portal>

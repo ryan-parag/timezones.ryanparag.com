@@ -79,12 +79,16 @@ function CopyButton() {
     >
       <Tooltip.Trigger
         ref={buttonRef}
-        className={'bg-white dark:bg-zinc-950 rounded-full p-2 border border-zinc-200 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 transition-colors hover:text-zinc-900 dark:hover:text-zinc-200 hover:bg-zinc-950/10 dark:hover:bg-white/10 transform active:scale-95 active:shadow-inner'}
+        className={'bg-white inline-flex items-center gap-1 dark:bg-zinc-950 rounded-full p-2 border border-zinc-200 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 transition-colors hover:text-zinc-900 dark:hover:text-zinc-200 hover:bg-zinc-950/10 dark:hover:bg-white/10 transform active:scale-95 active:shadow-inner text-xs'}
         onClick={handleCopy}
         aria-label="Copy to clipboard"
         render={<Button disabled={copied} className={'disabled:opacity-50 disabled:cursor-not-allowed'} focusableWhenDisabled />}
       >
-        {copied ? <Check className={'h-5 w-5 text-green-700 dark:text-green-500'} /> : <Clipboard className={'h-5 w-5'} />}
+        {copied ? (
+          <><Check className={'h-5 w-5 text-green-700 dark:text-green-500'} /> <span>Copied</span></>
+          ) : (
+          <><Clipboard className={'h-5 w-5'} /> <span>Share URL</span></>
+          )}
       </Tooltip.Trigger>
       <Tooltip.Portal>
         <Tooltip.Positioner sideOffset={8}>

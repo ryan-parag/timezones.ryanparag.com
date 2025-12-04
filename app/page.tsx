@@ -7,6 +7,8 @@ import Footer from '@/components/Footer'
 import TimezoneCard from '@/components/TimezoneCard'
 import { TimezoneData } from '@/types'
 import { getUserLocation } from '@/utils/userLocation'
+import { Toaster } from 'sonner'
+import { Check } from 'lucide-react'
 
 
 function HomeContent() {
@@ -179,6 +181,16 @@ function HomeContent() {
         </div>
       </main>
       <Footer />
+      <Toaster
+        icons={{
+          success: <div className="bg-green-50 text-green-600 dark:bg-green-950 dark:text-green-400 inline-flex items-center justify-center rounded-full p-1 h-5 w-5 mr-2"><Check/></div>
+        }}
+        toastOptions={{
+          classNames: {
+            toast: '!bg-white dark:!bg-zinc-950 !text-zinc-900 dark:!text-white border-zinc-200 dark:!border-zinc-800',
+          }
+        }}
+      />
     </div>
   )
 }

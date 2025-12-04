@@ -14,6 +14,7 @@ import { Toast } from '@base-ui-components/react';
 import { Toggle } from '@base-ui-components/react/toggle';
 import { ToggleGroup } from '@base-ui-components/react/toggle-group';
 import Link from 'next/link';
+import { toast } from 'sonner'
 
 const anchoredToastManager = Toast.createToastManager();
 
@@ -52,6 +53,7 @@ function CopyButton() {
   function handleCopy() {
     setCopied(true);
     copyTextToClipboard()
+    toast.success('URL copied to clipboard')
     anchoredToastManager.add({
       description: 'Copied',
       positionerProps: {
@@ -82,13 +84,9 @@ function CopyButton() {
         className={'bg-white inline-flex items-center gap-1 dark:bg-zinc-950 rounded-full p-2 border border-zinc-200 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 transition-colors hover:text-zinc-900 dark:hover:text-zinc-200 hover:bg-zinc-950/10 dark:hover:bg-white/10 transform active:scale-95 active:shadow-inner text-xs'}
         onClick={handleCopy}
         aria-label="Copy to clipboard"
-        render={<Button disabled={copied} className={'disabled:opacity-50 disabled:cursor-not-allowed'} focusableWhenDisabled />}
+        render={<Button className={'disabled:opacity-50 disabled:cursor-not-allowed'} focusableWhenDisabled />}
       >
-        {copied ? (
-          <><Check className={'h-5 w-5 text-green-700 dark:text-green-500'} /> <span>Copied</span></>
-          ) : (
-          <><Clipboard className={'h-5 w-5'} /> <span>Share</span></>
-          )}
+        <Clipboard className={'h-5 w-5'} /> <span>Share</span>
       </Tooltip.Trigger>
       <Tooltip.Portal>
         <Tooltip.Positioner sideOffset={8}>

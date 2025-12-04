@@ -177,7 +177,7 @@ export default function Header({
                     onClick={() => setIs24Hour(false)}
                     className={`w-9 py-1 rounded-full text-sm font-medium transition-colors ${
                       !is24Hour
-                        ? 'bg-zinc-300 dark:bg-zinc-700 text-zinc-950 dark:text-white'
+                        ? 'bg-zinc-300 dark:bg-zinc-700 text-zinc-950 dark:text-white transform active:scale-95 active:shadow-inner'
                         : 'text-zinc-800 dark:text-zinc-200 hover:text-zinc-900 dark:hover:text-zinc-200 hover:bg-zinc-950/10 dark:hover:bg-white/10 transform active:scale-95 active:shadow-inner'
                     }`}
                   >
@@ -187,7 +187,7 @@ export default function Header({
                     onClick={() => setIs24Hour(true)}
                     className={`w-9 py-1 rounded-full text-sm font-medium transition-colors ${
                       is24Hour
-                        ? 'bg-zinc-300 dark:bg-zinc-700 text-zinc-950 dark:text-white'
+                        ? 'bg-zinc-300 dark:bg-zinc-700 text-zinc-950 dark:text-white transform active:scale-95 active:shadow-inner'
                         : 'text-zinc-800 dark:text-zinc-200 hover:text-zinc-900 dark:hover:text-zinc-200 hover:bg-zinc-950/10 dark:hover:bg-white/10 transform active:scale-95 active:shadow-inner'
                     }`}
                   >
@@ -201,7 +201,7 @@ export default function Header({
                     onClick={() => setIsDarkMode(false)}
                     className={`px-1 py-1 rounded-full text-sm font-medium transition-colors ${
                       !isDarkMode
-                        ? 'bg-zinc-300 dark:bg-zinc-700 text-zinc-950 dark:text-white'
+                        ? 'bg-zinc-300 dark:bg-zinc-700 text-zinc-950 dark:text-white transform active:scale-95 active:shadow-inner'
                         : 'text-zinc-800 dark:text-zinc-200 hover:text-zinc-900 dark:hover:text-zinc-200 hover:bg-zinc-950/10 dark:hover:bg-white/10 transform active:scale-95 active:shadow-inner'
                     }`}
                   >
@@ -211,7 +211,7 @@ export default function Header({
                     onClick={() => setIsDarkMode(true)}
                     className={`px-1 py-1 rounded-full text-sm font-medium transition-colors ${
                       isDarkMode
-                        ? 'bg-zinc-300 dark:bg-zinc-700 text-zinc-950 dark:text-white'
+                        ? 'bg-zinc-300 dark:bg-zinc-700 text-zinc-950 dark:text-white transform active:scale-95 active:shadow-inner'
                         : 'text-zinc-800 dark:text-zinc-200 hover:text-zinc-900 dark:hover:text-zinc-200 hover:bg-zinc-950/10 dark:hover:bg-white/10 transform active:scale-95 active:shadow-inner'
                     }`}
                   >
